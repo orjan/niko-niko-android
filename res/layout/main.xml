@@ -4,10 +4,25 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <TextView
-            android:layout_width="fill_parent"
+    <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
-            />
+            android:id="@+id/happyButton" android:layout_gravity="center"
+            android:src="@drawable/icon_happy" android:contentDescription="@string/happy_image_text" android:onClick="submitHappy"
+            android:background="@android:color/transparent"/>
+
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/indifferentButton" android:layout_gravity="center"
+            android:src="@drawable/icon_indifferent" android:contentDescription="@string/indifferent_image_text" android:onClick="submitIndifferent"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sadButton" android:layout_gravity="center"
+            android:src="@drawable/icon_sad" android:contentDescription="@string/sad_image_text" android:onClick="submitSad"
+            android:background="@android:color/transparent"/>
+
 </LinearLayout>
 

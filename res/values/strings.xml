@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">niko</string>
+    <string name="app_name">NikoNiko</string>
+    <string name="happy_image_text">It was a happy day</string>
+    <string name="indifferent_image_text">Just a normal day</string>
+    <string name="sad_image_text">I\'m feeling sad</string>
 </resources>
