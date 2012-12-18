@@ -53,8 +53,8 @@ public class MainActivity extends NikoActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        intent.putExtra( MainActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.Prefs1Fragment.class.getName() );
-        intent.putExtra( MainActivity.EXTRA_NO_HEADERS, true );
+        //intent.putExtra( MainActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.ApiPreferenceFragment.class.getName() );
+        //intent.putExtra( MainActivity.EXTRA_NO_HEADERS, true );
 
         startActivity(intent);
         return true;

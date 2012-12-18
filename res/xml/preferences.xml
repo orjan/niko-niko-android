@@ -30,9 +30,5 @@
                 android:dialogTitle="Welcome Message for Password"
                 android:dialogMessage="Enter your password"
                 android:inputType="textPassword" />
-
-
     </PreferenceCategory>
-
-
 </PreferenceScreen>
