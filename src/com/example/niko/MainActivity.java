@@ -14,8 +14,6 @@ import com.example.niko.api.NikoNikoApi;
 import com.example.niko.api.Response;
 
 public class MainActivity extends NikoActivity {
-    private static final String TAG = "MainActivity";
-
     /**
      * When starting this activity, the invoking Intent can contain this extra
      * string to specify which fragment should be initially displayed.
@@ -53,22 +51,13 @@ public class MainActivity extends NikoActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        //intent.putExtra( MainActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.ApiPreferenceFragment.class.getName() );
-        //intent.putExtra( MainActivity.EXTRA_NO_HEADERS, true );
+        if (NikoNiko.getInstance().hasSupportForHoneycomb()) {
+            intent.putExtra( MainActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.ApiPreferenceFragment.class.getName() );
+            intent.putExtra( MainActivity.EXTRA_NO_HEADERS, true );
+        }
 
         startActivity(intent);
         return true;
-
-        /*switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; go home
-                Intent intent = new Intent(this, SettingsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }*/
     }
 
     public void submitHappy(View view) {
@@ -104,7 +93,5 @@ public class MainActivity extends NikoActivity {
         };
 
         asyncTask.execute(new AddRatingRequest(rating));
-
-
     }
 }

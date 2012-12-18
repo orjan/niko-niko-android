@@ -3,6 +3,7 @@ package com.example.niko;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 

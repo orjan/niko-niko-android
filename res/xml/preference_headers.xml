@@ -3,8 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <header android:fragment="com.example.niko.SettingsActivity$ApiPreferenceFragment"
-            android:title="Prefs 1"
-            android:summary="An example of some preferences."
-            android:breadCrumbTitle="Hello"/>
+            android:title="Settings"
+            android:summary="The most important settings"
+            android:breadCrumbTitle="API" />
 
 </preference-headers>

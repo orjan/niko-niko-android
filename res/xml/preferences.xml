@@ -5,30 +5,29 @@
             android:title="API Settings"
             android:key="api">
 
+        <!-- android:summary="Server summary" -->
         <EditTextPreference
                 android:key="base_url"
                 android:title="Server"
-                android:summary="Server summary"
                 android:dialogTitle="Welcome Message"
                 android:dialogMessage="Enter server address"
-                android:defaultValue="http://"
-                android:inputType="text" />
+                android:hint="http://192.168.1.12:1337"
+                android:inputType="textUri" />
 
         <EditTextPreference
                 android:key="email"
                 android:title="Email"
-                android:summary="Email summary"
                 android:dialogTitle="Welcome Message"
                 android:dialogMessage="Enter your email"
-                android:defaultValue="orjsjo@tretton37.com"
-                android:inputType="text" />
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
 
         <EditTextPreference
                 android:key="password"
                 android:title="Password"
-                android:summary="Password summary"
                 android:dialogTitle="Welcome Message for Password"
                 android:dialogMessage="Enter your password"
+                android:hint="Password"
                 android:inputType="textPassword" />
     </PreferenceCategory>
 </PreferenceScreen>
