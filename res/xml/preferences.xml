@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="API Settings"
+            android:key="api">
+
+        <EditTextPreference
+                android:key="base_url"
+                android:title="Server"
+                android:summary="Server summary"
+                android:dialogTitle="Welcome Message"
+                android:dialogMessage="Enter server address"
+                android:defaultValue="http://"
+                android:inputType="text" />
+
+        <EditTextPreference
+                android:key="email"
+                android:title="Email"
+                android:summary="Email summary"
+                android:dialogTitle="Welcome Message"
+                android:dialogMessage="Enter your email"
+                android:defaultValue="orjsjo@tretton37.com"
+                android:inputType="text" />
+
+        <EditTextPreference
+                android:key="password"
+                android:title="Password"
+                android:summary="Password summary"
+                android:dialogTitle="Welcome Message for Password"
+                android:dialogMessage="Enter your password"
+                android:inputType="textPassword" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -1,8 +1,10 @@
 package com.example.niko;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +17,21 @@ public class MainActivity extends NikoActivity {
     private static final String TAG = "MainActivity";
 
     /**
+     * When starting this activity, the invoking Intent can contain this extra
+     * string to specify which fragment should be initially displayed.
+     */
+    public static final String EXTRA_SHOW_FRAGMENT = ":android:show_fragment";
+
+    /**
+     * When starting this activity, the invoking Intent can contain this extra
+     * boolean that the header list should not be displayed.  This is most often
+     * used in conjunction with {@link #EXTRA_SHOW_FRAGMENT} to launch
+     * the activity to display a specific fragment that the user has navigated
+     * to.
+     */
+    public static final String EXTRA_NO_HEADERS = ":android:no_headers";
+
+    /**
      * Called when the activity is first created.
      */
     @Override
@@ -22,6 +39,7 @@ public class MainActivity extends NikoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,6 +52,10 @@ public class MainActivity extends NikoActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        intent.putExtra( MainActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.Prefs1Fragment.class.getName() );
+        intent.putExtra( MainActivity.EXTRA_NO_HEADERS, true );
+
         startActivity(intent);
         return true;
 
@@ -62,7 +84,6 @@ public class MainActivity extends NikoActivity {
     }
 
     private void submitNikoNikoStatus(int rating) {
-
         AsyncTask<AddRatingRequest, Void, Response> asyncTask = new AsyncTask<AddRatingRequest, Void, Response>() {
             @Override
             protected Response doInBackground(AddRatingRequest... addRatingRequests) {

@@ -6,24 +6,31 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class SettingsActivity extends NikoActivity {
+import java.util.List;
+
+public class SettingsActivity extends PreferenceActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.settings);
-
+        //setContentView(R.layout.settings);
+        //setPreferenceScreen();
+        // addPreferencesFromResource(R.xml.preferences);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             ActionBar actionBar = getActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         // Populate username from preferences
+        /*
         SharedPreferences preferences = getSharedPreferences("nikoniko", 0);
         String username = preferences.getString("username", null);
         if (username != null) {
@@ -35,8 +42,33 @@ public class SettingsActivity extends NikoActivity {
         if (url != null) {
             EditText viewById = (EditText) findViewById(R.id.url);
             viewById.setText(url);
+        }           */
+    }
+
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.preference_headers, target);
+    }
+
+    /**
+     * This fragment shows the preferences for the first header.
+     */
+    public static class Prefs1Fragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            // Make sure default values are applied.  In a real app, you would
+            // want this in a shared function that is used to retrieve the
+            // SharedPreferences wherever they are needed.
+            PreferenceManager.setDefaultValues(getActivity(),
+                    R.xml.preferences, false);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences);
         }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -45,6 +77,9 @@ public class SettingsActivity extends NikoActivity {
         startActivity(intent);
         return true;
     }
+
+    /*
+
 
     public void saveSettings(View view) {
         // Hide keyboard
@@ -70,6 +105,6 @@ public class SettingsActivity extends NikoActivity {
 
         toast("Settings has been updated");
     }
-
+       */
 }
 

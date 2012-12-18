@@ -3,12 +3,10 @@ package com.example.niko;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class NikoActivity extends Activity {
-
-    private static final String SHARED_PREFERENCE_NAME = "nikoniko";
-
     public void toast(String message) {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
@@ -16,16 +14,8 @@ public class NikoActivity extends Activity {
     }
 
     public Credentials getCredentials() {
-        SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCE_NAME, 0);
-        return new Credentials(preferences.getString("username", null), preferences.getString("password", null), preferences.getString("url", null));
-    }
-
-    public void setCredentials(Credentials credentials) {
-        SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFERENCE_NAME, 0).edit();
-        editor.putString("username", credentials.getUsername());
-        editor.putString("password", credentials.getPassword());
-        editor.putString("url", credentials.getUrl());
-        editor.commit();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return new Credentials(preferences.getString("email", null), preferences.getString("password", null), preferences.getString("base_url", null));
     }
 
     public class Credentials {
